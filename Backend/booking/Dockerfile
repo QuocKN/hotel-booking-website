@@ -7,5 +7,8 @@ WORKDIR /app
 # Sao chép toàn bộ file từ thư mục target vào container
 COPY target/*.jar app.jar
 
+# Copy thư mục uploads vào container
+COPY uploads/ /app/uploads/
+
 # Chạy ứng dụng
 CMD ["java", "-jar", "app.jar"]
