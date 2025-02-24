@@ -4,8 +4,8 @@ FROM openjdk:17-jdk-slim
 # Đặt thư mục làm thư mục chính
 WORKDIR /app
 
-# Copy file JAR vào container
-COPY target/booking-0.0.1-SNAPSHOT.jar app.jar
+# Sao chép toàn bộ file từ thư mục target vào container
+COPY target/*.jar app.jar
 
 # Chạy ứng dụng
 CMD ["java", "-jar", "app.jar"]
