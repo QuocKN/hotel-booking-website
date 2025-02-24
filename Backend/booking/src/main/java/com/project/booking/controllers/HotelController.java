@@ -146,11 +146,11 @@ public class HotelController {
         return uniqueFilename;
     }
 
-
+    private final String uploadDir = "uploads/";
     @GetMapping("/image/{name}")
     public ResponseEntity<?> viewPicture(@PathVariable String name) {
         try {
-            java.nio.file.Path picturePath = Paths.get("E:/Documents/Code Web/Backend/uploads/" + name);
+            java.nio.file.Path picturePath = Paths.get(uploadDir + name);
             UrlResource resource = new UrlResource(picturePath.toUri());
 
             String contentType = URLConnection.guessContentTypeFromName(picturePath.toString());
@@ -176,11 +176,7 @@ public class HotelController {
     ) {
         try {
             Hotel hotel = hotelService.getHotelById(hotelId);
-            System.out.println(hotel.getId());
-//            if (hotel == null) {
-//                model.addAttribute("error", "Khách sạn không tồn tại.");
-//                return "errorPage";
-//            }
+            System.out.println(hotel.getId());       }
 
             List<RoomDetailResponse> roomDetailResponseList = new ArrayList<>();
 
@@ -224,48 +220,6 @@ public class HotelController {
             return "House";
         }
     }
-//    @GetMapping("/{hotelId}")
-//    public String getHotel(
-//            @PathVariable("hotelId") Long hotelId,
-//            @RequestParam(required = false) String checkIn,
-//            @RequestParam(required = false) String checkOut,
-//            Model model
-//    ){
-//        try{
-//            Hotel hotel = hotelService.getHotelById(hotelId);
-//            List<RoomDetailResponse> roomDetailResponseList = new ArrayList<>();
-//            boolean availabilityChecked = false;
-//            LocalDate today = LocalDate.now();
-//
-//            if (checkIn != null && checkOut != null) {
-//                LocalDate checkInDate = LocalDate.parse(checkIn);
-//                LocalDate checkOutDate = LocalDate.parse(checkOut);
-//
-//                // Check if check-out is before check-in, check-in is before today, or check-out is after today
-//                if (checkOutDate.isBefore(checkInDate) || checkInDate.isBefore(today) || checkOutDate.isBefore(today)) {
-//                    checkIn = null;
-//                    checkOut = null;
-//                    model.addAttribute("error", "Ngày đặt không hợp lệ. Vui lòng kiểm tra lại.");
-//                }else{
-//                    roomDetailResponseList = hotelService.getRoomAvailable(hotelId, checkIn, checkOut);
-//                    availabilityChecked = true;
-//                }
-//
-//            } else {
-//                roomDetailResponseList = hotelService.getRoomDetailResponse(hotelId);
-//            }
-//
-//            model.addAttribute("roomDetailResponse", roomDetailResponseList);
-//            model.addAttribute("hotel", hotel);
-//            model.addAttribute("checkIn", checkIn != null ? checkIn : today.toString());
-//            model.addAttribute("checkOut", checkOut != null ? checkOut : today.plusDays(3).toString());
-//            model.addAttribute("availabilityChecked", availabilityChecked);
-//            return "House";
-//        } catch (Exception e) {
-//            model.addAttribute("error", e.getMessage());
-//            return "House";
-//        }
-//    }
 
     @DeleteMapping("delete/{hotelId}")
     public ResponseEntity<?> deleteHotel(
