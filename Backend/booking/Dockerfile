@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy file .jar vào container
-COPY target/*.jar app.jar
+COPY target/booking-0.0.1-SNAPSHOT.jar app.jar
 
 # Chạy ứng dụng
 CMD ["java", "-jar", "app.jar"]
