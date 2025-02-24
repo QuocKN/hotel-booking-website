@@ -115,7 +115,7 @@ public class HotelController {
             }
 
             String filename = storeFile(file);
-            String fileUrl = "http://localhost:8088/hotel/image/" + filename;
+            String fileUrl = "https://hotel-booking-website-production.up.railway.app//hotel/image/" + filename;
             // Update the existing picture with the new image URL and details
             hotelDTO.setImage(filename);
             Hotel updatedHoted = hotelService.updateThumbnail(
