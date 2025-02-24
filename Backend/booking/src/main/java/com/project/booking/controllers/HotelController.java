@@ -146,7 +146,7 @@ public class HotelController {
         return uniqueFilename;
     }
 
-    private final String uploadDir = "uploads/";
+    private final String uploadDir = "/app/uploads/";
     @GetMapping("/image/{name}")
     public ResponseEntity<?> viewPicture(@PathVariable String name) {
         try {
