@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/*.jar app.jar
 
 # Copy thư mục uploads vào container
-COPY uploads/ /app/uploads/
+VOLUME ["/app/Backend/booking/uploads"]
 
 # Chạy ứng dụng
 CMD ["java", "-jar", "app.jar"]
