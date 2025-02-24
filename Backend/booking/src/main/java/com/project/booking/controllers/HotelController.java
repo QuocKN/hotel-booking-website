@@ -146,9 +146,9 @@ public class HotelController {
         return uniqueFilename;
     }
 
-    private final String uploadDir = "/app/uploads/";
     @GetMapping("/image/{name}")
     public ResponseEntity<?> viewPicture(@PathVariable String name) {
+         private final String uploadDir = "booking/uploads/";
         try {
             java.nio.file.Path picturePath = Paths.get(uploadDir + name);
             UrlResource resource = new UrlResource(picturePath.toUri());
